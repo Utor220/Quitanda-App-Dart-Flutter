@@ -183,9 +183,9 @@ class TelaLogin extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            side: const BorderSide(
+                            side: BorderSide(
                               width: 2,
-                              color: Colors.red,
+                              color: CustomColors.customContrastColor,
                             ),
                           ),
                           onPressed: () {

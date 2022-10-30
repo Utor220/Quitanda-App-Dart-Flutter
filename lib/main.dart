@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quitanda_app/src/Config/custom_colors.dart';
 
 import 'src/pages/Autenticação/tela_login.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.red,
+          primarySwatch: CustomColors.customSwatchColor,
           scaffoldBackgroundColor: Colors.white.withAlpha(190)),
       debugShowCheckedModeBanner: false,
       home: const TelaLogin(),

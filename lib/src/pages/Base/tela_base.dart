@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
+import 'package:quitanda_app/src/pages/cart/cart_tab.dart';
 
 import '../home/menu_inicial_tab.dart';
 
@@ -25,7 +26,7 @@ class _TelaBaseState extends State<TelaBase> {
         controller: controladorPagina,
         children: [
           const MenuInicialTab(),
-          Container(color: Colors.purple),
+          CartTab(),
           Container(color: Colors.green),
           Container(color: Colors.tealAccent),
         ],
