@@ -6,6 +6,8 @@ class TextFieldFormStyle extends StatefulWidget {
   final String tfLabel;
   final bool isSecret;
   final List<TextInputFormatter>? inputFormatters;
+  final String? initialValue;
+  final bool readOnly;
 
   const TextFieldFormStyle({
     Key? key,
@@ -13,6 +15,8 @@ class TextFieldFormStyle extends StatefulWidget {
     required this.tfLabel,
     this.isSecret = false,
     this.inputFormatters,
+    this.initialValue,
+    this.readOnly = false,
   }) : super(key: key);
 
   @override
@@ -23,6 +27,7 @@ class _TextFieldFormStyleState extends State<TextFieldFormStyle> {
   bool isObscure = false;
   @override
   void initState() {
+    super.initState();
     isObscure = widget.isSecret;
   }
 
@@ -31,6 +36,8 @@ class _TextFieldFormStyleState extends State<TextFieldFormStyle> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
+        readOnly: widget.readOnly,
+        initialValue: widget.initialValue,
         inputFormatters: widget.inputFormatters,
         obscureText: isObscure,
         decoration: InputDecoration(
