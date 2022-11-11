@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_app/src/Config/custom_colors.dart';
+import 'package:quitanda_app/src/pages/splash/splash_screen.dart';
 
 import 'src/pages/Autenticação/tela_login.dart';
 
@@ -14,11 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Mercado Lunar',
       theme: ThemeData(
           primarySwatch: CustomColors.customSwatchColor,
           scaffoldBackgroundColor: Colors.white.withAlpha(190)),
       debugShowCheckedModeBanner: false,
-      home: const TelaLogin(),
+      home: const SplashScreen(),
     );
   }
 }

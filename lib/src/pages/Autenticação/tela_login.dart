@@ -1,8 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
+import 'package:quitanda_app/src/pages/common_widgets/app_name_widget.dart';
 import '../Base/tela_base.dart';
-import 'Componentes/textfield_style.dart';
+import 'package:quitanda_app/src/pages/common_widgets/textfield_style.dart';
 import 'tela_cadastro.dart';
 
 class TelaLogin extends StatelessWidget {
@@ -28,30 +29,11 @@ class TelaLogin extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //Titulo do app
-                    Text.rich(
-                      TextSpan(
-                        style: const TextStyle(
-                          fontSize: 40,
-                        ),
-                        children: [
-                          const TextSpan(
-                            text: 'Mercado',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Lunar',
-                            style: TextStyle(
-                              color: CustomColors.customContrastColor,
-                            ),
-                          )
-                        ],
-                      ),
+                    //Título do app
+                    const AppNameWidget(
+                      mercadoTitleColor: Colors.white,
+                      textSize: 40,
                     ),
-
                     //Subtítulo
                     SizedBox(
                       height: 30,

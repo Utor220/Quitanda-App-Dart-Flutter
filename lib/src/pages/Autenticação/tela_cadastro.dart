@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
-
-import 'Componentes/textfield_style.dart';
+import 'package:quitanda_app/src/pages/common_widgets/textfield_style.dart';
 
 class TelaCadastro extends StatelessWidget {
   TelaCadastro({Key? key}) : super(key: key);

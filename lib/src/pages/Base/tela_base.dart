@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
 import 'package:quitanda_app/src/pages/cart/cart_tab.dart';
+import 'package:quitanda_app/src/pages/orders/orders_tab.dart';
 import 'package:quitanda_app/src/pages/profile/profile_tab.dart';
 
 import '../home/menu_inicial_tab.dart';
@@ -25,11 +26,11 @@ class _TelaBaseState extends State<TelaBase> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: controladorPagina,
-        children: [
-          const MenuInicialTab(),
-          const CartTab(),
-          Container(color: Colors.green),
-          const ProfileTab(),
+        children: const [
+          MenuInicialTab(),
+          CartTab(),
+          OrdersTab(),
+          ProfileTab(),
         ],
       ),
 
@@ -39,7 +40,11 @@ class _TelaBaseState extends State<TelaBase> {
         onTap: (index) {
           setState(() {
             indexAtual = index;
-            controladorPagina.jumpToPage(index);
+            controladorPagina.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 700),
+              curve: Curves.ease,
+            );
           });
         },
         backgroundColor: CustomColors.customSwatchColor.shade800,

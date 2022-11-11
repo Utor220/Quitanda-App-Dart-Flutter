@@ -16,6 +16,7 @@ class _ProfileTabState extends State<ProfileTab> {
       appBar: AppBar(
         title: const Text('Perfil do Usuário'),
         actions: [
+          //Botão de LogOut
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.logout),
