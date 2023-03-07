@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:quitanda_app/src/Config/custom_colors.dart';
-import 'package:quitanda_app/src/pages/autentica%C3%A7%C3%A3o/tela_login.dart';
 import 'package:quitanda_app/src/pages/common_widgets/app_name_widget.dart';
+import 'package:quitanda_app/src/pages_routes/app_pages.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -19,9 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (c) {
-        return const TelaLogin();
-      }));
+      Get.offNamed(PagesRoute.loginRoute);
     });
   }
 

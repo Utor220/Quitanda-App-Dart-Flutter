@@ -1,8 +1,6 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
 import 'package:quitanda_app/src/pages/common_widgets/app_name_widget.dart';
 import 'package:quitanda_app/src/pages/common_widgets/custom_shimmer.dart';
@@ -61,8 +59,8 @@ class _MenuInicialTabState extends State<MenuInicialTab> {
             child: GestureDetector(
               onTap: () {},
               child: Badge(
-                badgeColor: CustomColors.customContrastColor,
-                badgeContent: const Text(
+                backgroundColor: CustomColors.customContrastColor,
+                label: const Text(
                   '2',
                   style: TextStyle(
                     color: Colors.white,
