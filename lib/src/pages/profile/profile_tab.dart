@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quitanda_app/src/pages/common_widgets/textfield_style.dart';
 import 'package:quitanda_app/src/Config/app_data.dart' as appData;
+
+import '../autenticação/controller/auth_controller.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -10,6 +13,8 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
+  final authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,9 @@ class _ProfileTabState extends State<ProfileTab> {
         actions: [
           //Botão de LogOut
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              authController.logOut();
+            },
             icon: const Icon(Icons.logout),
           ),
         ],
@@ -37,7 +44,7 @@ class _ProfileTabState extends State<ProfileTab> {
 
           //Nome
           TextFieldFormStyle(
-            initialValue: appData.user.nome,
+            initialValue: appData.user.name,
             tfIcone: Icons.person,
             tfLabel: 'Nome',
             readOnly: true,
@@ -45,7 +52,7 @@ class _ProfileTabState extends State<ProfileTab> {
 
           //Celular
           TextFieldFormStyle(
-            initialValue: appData.user.celular,
+            initialValue: appData.user.phone,
             tfIcone: Icons.phone,
             tfLabel: 'Celular',
             readOnly: true,

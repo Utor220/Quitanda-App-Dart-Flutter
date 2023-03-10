@@ -2,9 +2,12 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quitanda_app/src/config/custom_colors.dart';
+import 'package:quitanda_app/src/pages/autentica%C3%A7%C3%A3o/view/components/forgot_password_dialog.dart';
 import 'package:quitanda_app/src/pages/common_widgets/app_name_widget.dart';
 import 'package:quitanda_app/src/pages_routes/app_pages.dart';
 import 'package:quitanda_app/src/pages/common_widgets/textfield_style.dart';
+import 'package:quitanda_app/src/services/utils_services.dart';
+import 'package:quitanda_app/src/services/validators.dart';
 
 import '../controller/auth_controller.dart';
 
@@ -14,6 +17,7 @@ class TelaLogin extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -84,14 +88,8 @@ class TelaLogin extends StatelessWidget {
                           controller: emailController,
                           tfIcone: Icons.email,
                           tfLabel: 'Email',
-                          validator: (email) {
-                            if (email == null || email.isEmpty) {
-                              return 'Digite seu email!';
-                            } else if (!email.isEmail) {
-                              return "Digite um email válido!";
-                            }
-                            return null;
-                          },
+                          textInputType: TextInputType.emailAddress,
+                          validator: emailValidator,
                         ),
 
                         //Senha
@@ -100,14 +98,7 @@ class TelaLogin extends StatelessWidget {
                           tfIcone: Icons.lock,
                           tfLabel: 'Senha',
                           isSecret: true,
-                          validator: (password) {
-                            if (password == null || password.isEmpty) {
-                              return 'Digite sua senha!';
-                            } else if (password.length < 7) {
-                              return "Digite uma senha com ao menos 7 caracteres!";
-                            }
-                            return null;
-                          },
+                          validator: passwordValidator,
                         ),
 
                         //Botão de Entrar
@@ -151,7 +142,21 @@ class TelaLogin extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              final result = await showDialog(
+                                context: context,
+                                builder: (_) {
+                                  return ForgotPasswordDialog(
+                                    email: emailController.text,
+                                  );
+                                },
+                              );
+                              if (result ?? false) {
+                                utilsServices.showToast(
+                                    message:
+                                        'Um link de recuperação foi enviado para seu email.');
+                              }
+                            },
                             child: Text(
                               'Esqueçeu a senha?',
                               style: TextStyle(

@@ -5,6 +5,7 @@ import 'package:quitanda_app/src/pages_routes/app_pages.dart';
 import 'src/pages/autenticação/controller/auth_controller.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   Get.put(AuthController());
   runApp(const MyApp());
 }

@@ -9,7 +9,10 @@ class TextFieldFormStyle extends StatefulWidget {
   final String? initialValue;
   final bool readOnly;
   final String? Function(String?)? validator;
+  final String? Function(String?)? onSaved;
   final TextEditingController? controller;
+  final TextInputType? textInputType;
+  final GlobalKey<FormFieldState>? formFieldKey;
 
   const TextFieldFormStyle({
     Key? key,
@@ -21,6 +24,9 @@ class TextFieldFormStyle extends StatefulWidget {
     this.readOnly = false,
     this.validator,
     this.controller,
+    this.textInputType,
+    this.onSaved,
+    this.formFieldKey,
   }) : super(key: key);
 
   @override
@@ -40,12 +46,15 @@ class _TextFieldFormStyleState extends State<TextFieldFormStyle> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
+        key: widget.formFieldKey,
         controller: widget.controller,
         readOnly: widget.readOnly,
         initialValue: widget.initialValue,
         inputFormatters: widget.inputFormatters,
         obscureText: isObscure,
         validator: widget.validator,
+        keyboardType: widget.textInputType,
+        onSaved: widget.onSaved,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.tfIcone),
           suffixIcon: widget.isSecret
